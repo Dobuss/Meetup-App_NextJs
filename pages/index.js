@@ -22,9 +22,21 @@ const DUMMY_MEETUPS = [
 ];
 
 function HomePage(props) {
-
   return <MeetupList meetups={props.meetups} />;
 }
+
+/* export async function getServerSideProps(context){
+  // runs on the server after deployment, not during build; runs for every incoming request
+
+  const req = context.req;
+  const res = context.res;
+
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS
+    }
+  }
+} */
 
 export async function getStaticProps(){
   // fetch data from an api
