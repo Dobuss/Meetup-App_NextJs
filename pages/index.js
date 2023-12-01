@@ -1,10 +1,20 @@
 import { MongoClient } from "mongodb";
 import MeetupList from "../components/meetups/MeetupList";
+import Head from "next/head";
+import { Fragment } from "react";
 
 //SEO = search engine optimization
 
 function HomePage(props) {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>React Meetups</title>
+        <meta name="description" content="Browse a huge list of meetups" />
+      </Head>
+      <MeetupList meetups={props.meetups} />
+    </Fragment>
+  );
 }
 
 /* export async function getServerSideProps(context){
@@ -36,7 +46,7 @@ export async function getStaticProps() {
         title: meetup.title,
         address: meetup.address,
         image: meetup.image,
-        id: meetup._id.toString()
+        id: meetup._id.toString(),
       })),
     },
     revalidate: 10, //regenerate the page after *10* seconds
